@@ -1,5 +1,10 @@
 package activity_2;
 
+/**
+ * Represents a dining philosopher.
+ *
+ * Attempts to acquire designated forks at designated intervals
+ */
 public class Philosopher extends Thread{
 	private int id;
 	private Fork left;
@@ -9,6 +14,16 @@ public class Philosopher extends Thread{
 	private long thinkMillis;
 	private long eatMillis;
 
+	/**
+	 * Construct, initializing all fields
+	 * @param id identifier for philosopher
+	 * @param left fork to acquire
+	 * @param right fork to acquire
+	 * @param rHanded handedness
+	 * @param nTimes number of think/eat cycles
+	 * @param thinkMillis think time in milliseconds
+	 * @param eatMillis eat time in milliseconds
+	 */
 	public Philosopher(int id, Fork left, Fork right, boolean rHanded, int nTimes, long thinkMillis, long eatMillis){
 		this.id = id;
 		this.left = left;
@@ -19,6 +34,12 @@ public class Philosopher extends Thread{
 		this.eatMillis = eatMillis;
 	}
 
+	/**
+	 * Philosopher thinks, attempts to acquire a left and right fork,
+	 * eats, and then releases forks.
+	 * 
+	 * Handedness determines the order of fork acquisition.
+	 */
 	public void run(){
 		int i = 0;
 		while (nTimes == 0 ? true : i < nTimes) {
@@ -58,10 +79,10 @@ public class Philosopher extends Thread{
 				//TODO do we ignore or return something??
 				System.out.println("Phil didn't wanna eat.");
 			}
-			//Philosopher releases their right fork
+			//Philosopher releases right fork
 			this.right.release();
 			System.out.println("Philosopher " + this.id + " releases right fork");
-			//Philosopher releases their left fork
+			//Philosopher releases left fork
 			this.left.release();
 			System.out.println("Philosopher " + this.id + " releases left fork");
 		}
