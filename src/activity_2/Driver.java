@@ -1,5 +1,6 @@
 package activity_2;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Driver {
@@ -14,8 +15,8 @@ public class Driver {
 
 		// Create np forks
 		Fork[] forks = new Fork[np];
-		for (Fork fork : forks) {
-			fork = new Fork();
+		for (int i = 0; i < np; i++) {
+			forks[i] = new Fork();
 		}
 
 		// Create np philosophers and assign forks

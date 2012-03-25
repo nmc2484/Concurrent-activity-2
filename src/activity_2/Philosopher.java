@@ -28,6 +28,7 @@ public class Philosopher extends Thread{
 				this.sleep(t);
 			} catch( java.lang.InterruptedException ie){
 				//TODO do we ignore or return something??
+				System.out.println("Phil didn't wanna think");
 			}
 			if(this.rHanded){
 				System.out.println("Philosopher " + this.id + " goes for right fork");
@@ -55,6 +56,7 @@ public class Philosopher extends Thread{
 				this.sleep(eatTime);
 			} catch(java.lang.InterruptedException ie){
 				//TODO do we ignore or return something??
+				System.out.println("Phil didn't wanna eat.");
 			}
 			//Philosopher releases their right fork
 			this.right.release();

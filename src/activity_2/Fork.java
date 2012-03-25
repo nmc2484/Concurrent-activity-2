@@ -7,9 +7,12 @@ public class Fork implements IFork {
     public void acquire(){
         if (this.allocated){
             try{
-            Thread.currentThread().wait();
+            synchronized (Thread.currentThread()){
+					Thread.currentThread().wait();
+            }
             } catch(InterruptedException ie){
                 //TODO do we ignore or return something??
+            	System.out.println("Phil punched another Phil in the face!");
             }
         }
         this.allocated = true;
