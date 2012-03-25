@@ -35,38 +35,33 @@ public class Driver {
 	public static void main(String[] args) {
 		// Set default values
 
-		String arguments = args.toString();
-		String[] options = arguments.split("\\s+");
-		
-		for (int i = 0; i < options.length; i++) {
-			System.out.println("Arguments: " + options[i]);
+		String arguments = "";
+		for (int i = 0; i < args.length; i++) {
+			arguments += (args[i] + " ");
 		}
+
+		String[] options = arguments.split("[ ]+");
 
 		if (options[0] != null) {
-			if (options[0] == "-l") {
-				System.out.println("Philosophers are not all righthanded.");
+
+			if (options[0].equals("-l")) {
+
 				rightHanded = false;
 				if (options[1] != null) {
-					np = Integer.parseInt(options[1]);
-					nt = Integer.parseInt(options[2]);
-					tm = Integer.parseInt(options[3]);
-					em = Integer.parseInt(options[4]);
+					np = Integer.parseInt(options[1].trim());
+					nt = Integer.parseInt(options[2].trim());
+					tm = Integer.parseInt(options[3].trim());
+					em = Integer.parseInt(options[4].trim());
 				}
-			} else if (options.length == 4) {
-				np = Integer.parseInt(options[0]);
-				nt = Integer.parseInt(options[1]);
-				tm = Integer.parseInt(options[2]);
-				em = Integer.parseInt(options[3]);
+			} else if (options.length > 3) {
+				np = Integer.parseInt(options[0].trim());
+				nt = Integer.parseInt(options[1].trim());
+				tm = Integer.parseInt(options[2].trim());
+				em = Integer.parseInt(options[3].trim());
 			}
+
 		}
-		// TODO read in command line args
-
-		System.out.println("Philosophers are: " + rightHanded);
-		System.out.println("Number of Phils (and forks): " + np);
-		System.out.println("Number cycles: " + nt);
-		System.out.println("Max time to THINK: " + tm);
-		System.out.println("Max time to SlEeP: " + em);
-
+		
 		// Create np forks
 		Fork[] forks = new Fork[np];
 		for (int i = 0; i < np; i++) {
@@ -102,5 +97,7 @@ public class Driver {
 		// Start philosophizing
 		for (Philosopher philosopher : philosophers)
 			philosopher.start();
+
 	}
+
 }
