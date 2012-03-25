@@ -1,6 +1,5 @@
 package activity_2;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -61,7 +60,7 @@ public class Driver {
 			}
 
 		}
-		
+
 		// Create np forks
 		Fork[] forks = new Fork[np];
 		for (int i = 0; i < np; i++) {
@@ -94,10 +93,10 @@ public class Driver {
 			}
 			philosophers.add(philosopher);
 		}
+		
 		// Start philosophizing
 		for (Philosopher philosopher : philosophers)
 			philosopher.start();
-
 	}
 
 }
